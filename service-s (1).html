@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/AF805CCD-AA51-C942-83E0-259E1E91009A/main.js" charset="UTF-8"></script><script src="angular.min.js"></script>
+<body ng-app="myApp">
+<div  >
+<h1>{{log}}</h1>
+</div>
+<script>
+var app = angular.module('myApp', []);
+
+app.service('login', function() {
+this.login1=function(x,y)
+{
+ if(x =="admin" && y =="admin") {
+return true;
+}else { return false; }
+
+    }
+});
+app.controller('myctrl', function($scope, login) {
+  $scope.toggle =function(){
+    var check=login.login1($scope.username,$scope.pwd);
+alert(check);
+}
+});
+
+</script>
+<div ng-controller="myctrl">
+User Name:<input type="text" ng-model="username"><br>
+password:<input type="text" ng-model="pwd"><br>
+<br>
+<button ng-click="toggle()">submit</button></div>
+
+</body>
+</html>
